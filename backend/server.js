@@ -4,6 +4,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const userRoutes = require("./routes/user");
 const walletRoutes = require("./routes/wallet");
+const cors = require("cors");
 
 // express app
 const app = express();
@@ -15,7 +16,7 @@ app.use((req, res, next) => {
   console.log(req.path, req.url);
   next();
 });
-
+app.use(cors());
 //Routes
 app.use("/api/user", userRoutes);
 app.use("/api/wallet", walletRoutes);
